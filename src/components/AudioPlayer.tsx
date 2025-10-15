@@ -5,6 +5,7 @@ import React, {
   useRef,
   useEffect,
   useCallback,
+  ReactNode,
 } from "react";
 
 interface AyahAudio {
