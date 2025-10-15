@@ -22,18 +22,12 @@ const Index = () => {
     );
   }, [searchQuery]);
 
-  const handleSurahClick = (surah: Surah) => {
-    toast.info(`Detail untuk ${surah.name} akan segera hadir! 🌿`);
-    // TODO: Navigate to surah detail page
-    console.log("Selected surah:", surah);
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <main>
         <Hero onSearch={setSearchQuery} searchValue={searchQuery} />
-        <SurahList surahs={filteredSurahs} onSurahClick={handleSurahClick} />
+        <SurahList surahs={filteredSurahs} />
       </main>
       
       <footer className="border-t py-8 mt-12">

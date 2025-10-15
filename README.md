@@ -4,6 +4,16 @@
 
 **URL**: https://lovable.dev/projects/9384faeb-a369-4ba0-ac08-591237c39a36
 
+## Audio Playback Features
+
+This project now includes audio playback functionality for Surahs. 
+
+- **Ayah-by-Ayah Playback**: Each Ayah in the Surah Detail view has a play icon next to it. Clicking this icon will play the audio for that specific Ayah.
+- **Floating Audio Control Panel**: A floating control panel appears at the bottom of the screen when an Ayah is playing. This panel provides:
+  - **Play/Pause**: Toggle playback of the current Ayah.
+  - **Next/Previous Ayah**: Navigate to the next or previous Ayah in the Surah.
+  - **Autoplay**: Audio will automatically play the next Ayah once the current one finishes.
+
 ## How can I edit this code?
 
 There are several ways of editing your application.

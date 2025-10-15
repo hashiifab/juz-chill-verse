@@ -3,10 +3,9 @@ import { Surah } from "@/types/surah";
 
 interface SurahListProps {
   surahs: Surah[];
-  onSurahClick: (surah: Surah) => void;
 }
 
-export function SurahList({ surahs, onSurahClick }: SurahListProps) {
+export function SurahList({ surahs }: SurahListProps) {
   return (
     <section className="container mx-auto px-4 py-12">
       <div className="mb-8">
@@ -32,7 +31,6 @@ export function SurahList({ surahs, onSurahClick }: SurahListProps) {
               translation={surah.translation}
               verses={surah.verses}
               revelation={surah.revelation}
-              onClick={() => onSurahClick(surah)}
             />
           </div>
         ))}
