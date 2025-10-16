@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { juzAmmaSurahs } from "@/data/juzAmma";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Play } from "lucide-react";
+import { ArrowLeft, Play, Pause } from "lucide-react";
 import { useAudioPlayer } from "@/components/AudioPlayer";
 
 interface Ayah {
@@ -53,7 +53,7 @@ const SurahDetail = () => {
   const [surahIndonesianAyahs, setSurahIndonesianAyahs] = useState<Ayah[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-  const { playAyah, setAyahs, setSurahNumber } = useAudioPlayer();
+  const { playAyahExternal, setAyahs, setSurahNumber, currentPlayingAyah, isPlaying } = useAudioPlayer();
 
   const surah = juzAmmaSurahs.find(
     (s) => s.number === Number(surahNumber)
@@ -182,10 +182,14 @@ const SurahDetail = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => playAyah(arabicAyah, surah.number)}
+                      onClick={() => playAyahExternal(arabicAyah, surah.number, false)}
                       className="mr-2"
                     >
-                      <Play className="h-5 w-5" />
+                      {isPlaying && currentPlayingAyah?.ayah.numberInSurah === arabicAyah.numberInSurah ? (
+                        <Pause className="h-5 w-5" />
+                      ) : (
+                        <Play className="h-5 w-5" />
+                      )}
                     </Button>
                     <p className="text-right text-3xl leading-relaxed font-arabic mb-2">
                       {displayArabicText} ({arabicAyah.numberInSurah})

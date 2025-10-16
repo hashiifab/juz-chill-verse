@@ -5,13 +5,16 @@ import { juzAmmaSurahs } from "@/data/juzAmma";
 import React, { useState, useEffect, useRef } from "react";
 
 export const FloatingAudioPlayer = () => {
-  const { currentPlayingAyah, isPlaying, playPause, playNextAyah, playPreviousAyah, ayahs, surahNumber, playAyah } = useAudioPlayer();
+  const { currentPlayingAyah, isPlaying, playPause, playNextAyah, playPreviousAyah, ayahs, surahNumber, playAyahExternal, autoplay } = useAudioPlayer();
   const [isVisible, setIsVisible] = useState(true);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handlePlayPause = () => {
     if (!currentPlayingAyah && !isPlaying && ayahs.length > 0 && surahNumber) {
-      playAyah(ayahs[0], surahNumber);
+      playAyahExternal(ayahs[0], surahNumber, true); // Ensure autoplay is true for floating player
+    } else if (currentPlayingAyah && !isPlaying) {
+      // If there's a current ayah but not playing, resume with autoplay true
+      playAyahExternal(currentPlayingAyah.ayah, currentPlayingAyah.surahNumber, true);
     } else {
       playPause();
     }
